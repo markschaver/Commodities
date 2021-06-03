@@ -54,7 +54,14 @@ comm <- filter(comm, comm$YEAR > 2015)
 ggplot(comm, aes(x = DATE, y = RICE_05)) + 
   geom_line() +
   labs(x = "Date", y = "Price of rice ($/mt)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$RICE_05)-100,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Palm Oil
@@ -63,7 +70,14 @@ ggplot(comm, aes(x = DATE, y = RICE_05)) +
 ggplot(comm, aes(x = DATE, y = PALM_OIL)) + 
   geom_line() +
   labs(x = "Date", y = "Price of palm oil ($/mt)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$PALM_OIL)-100,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Rubber
@@ -72,7 +86,14 @@ ggplot(comm, aes(x = DATE, y = PALM_OIL)) +
 ggplot(comm, aes(x = DATE, y = RUBBER_TSR20)) + 
   geom_line() +
   labs(x = "Date", y = "Price of rubber ($/kg)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$RUBBER_TSR20)-.1,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Iron ore
@@ -81,7 +102,14 @@ ggplot(comm, aes(x = DATE, y = RUBBER_TSR20)) +
 ggplot(comm, aes(x = DATE, y = IRON_ORE)) + 
   geom_line() +
   labs(x = "Date", y = "Price of iron ore ($/dmtu)*") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$IRON_ORE)-20,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Crude Petro
@@ -90,7 +118,14 @@ ggplot(comm, aes(x = DATE, y = IRON_ORE)) +
 ggplot(comm, aes(x = DATE, y = CRUDE_PETRO)) + 
   geom_line() +
   labs(x = "Date", y = "Price of crude petrol ($/bbl)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$CRUDE_PETRO)-10,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Gold
@@ -99,7 +134,14 @@ ggplot(comm, aes(x = DATE, y = CRUDE_PETRO)) +
 ggplot(comm, aes(x = DATE, y = GOLD)) + 
   geom_line() +
   labs(x = "Date", y = "Price of gold ($/troy oz)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$GOLD)-100,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 ## Sugar
@@ -108,7 +150,14 @@ ggplot(comm, aes(x = DATE, y = GOLD)) +
 ggplot(comm, aes(x = DATE, y = SUGAR_WLD)) + 
   geom_line() +
   labs(x = "Date", y = "Price of sugar ($/kg)") +
-  theme_bw()
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Mar 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "March 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Mar 2020"]),
+             y = max(comm$SUGAR_WLD)-.04,
+             angle = 90, 
+             vjust = 1.5)
 ```
 
 Note: All prices are in nominal U.S. dollars.
