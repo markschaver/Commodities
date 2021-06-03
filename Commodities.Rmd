@@ -7,6 +7,7 @@ output: rmarkdown::github_document
 library(openxlsx)
 library(tidyverse)
 library(knitr)
+library(zoo)
 
 setwd("~/OneDrive/03 Resources/Data/Commodities")
 
@@ -40,48 +41,50 @@ comm <- separate(comm, MONTH, c("YEAR", "MONTH"), sep = "M")
 comm$YEAR <- as.numeric(comm$YEAR)
 comm$MONTH <- as.numeric(comm$MONTH)
 
+comm$DATE <- as.yearmon(paste(comm$YEAR, comm$MONTH), "%Y %m")
+
 comm <- filter(comm, comm$YEAR > 2015)
 ```
 
 ## Rice
 
 ```{r rice, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$RICE_05~comm$YEAR)
+plot(comm$RICE_05~comm$DATE)
 ```
 
 ## Palm Oil
 
 ```{r palm-oil, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$PALM_OIL~comm$YEAR)
+plot(comm$PALM_OIL~comm$DATE)
 ```
 
 ## Rubber
 
 ```{r rubber, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$RUBBER1_MYSG~comm$YEAR)
+plot(comm$RUBBER1_MYSG~comm$DATE)
 ```
 
 ## Iron ore
 
 ```{r iron, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$IRON_ORE~comm$YEAR)
+plot(comm$IRON_ORE~comm$DATE)
 ```
 
 ## Crude Petro
 
 ```{r crude, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$CRUDE_PETRO~comm$YEAR)
+plot(comm$CRUDE_PETRO~comm$DATE)
 ```
 
 ## Gold
 
 ```{r gold, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$GOLD~comm$YEAR)
+plot(comm$GOLD~comm$DATE)
 ```
 
 ## Sugar
 
 ```{r sugar, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$SUGAR_WLD~comm$YEAR)
+plot(comm$SUGAR_WLD~comm$DATE)
 ```
 
