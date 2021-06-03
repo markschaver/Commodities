@@ -2,7 +2,7 @@
 
 ## World Bank commodity price data
 
-> Pink sheets are released on the second business day of the month. Next release: June 2, 2021.
+The World Bank's commodity price data report is known as the "pink sheet" and they are released on the second business day of each month.
 
 ## Main page
 
