@@ -32,7 +32,7 @@ comm <- select(comm,
 	PALM_OIL,
 	RICE_05,
 	SUGAR_WLD,
-	RUBBER1_MYSG,
+	RUBBER_TSR20,
 	IRON_ORE,
 	GOLD
 	)
@@ -40,8 +40,10 @@ comm <- select(comm,
 comm <- separate(comm, MONTH, c("YEAR", "MONTH"), sep = "M")
 comm$YEAR <- as.numeric(comm$YEAR)
 comm$MONTH <- as.numeric(comm$MONTH)
+comm$RUBBER_TSR20 <- as.numeric(comm$RUBBER_TSR20)
 
 comm$DATE <- as.yearmon(paste(comm$YEAR, comm$MONTH), "%Y %m")
+# comm$RUBBER_TSR20 <- comm$RUBBER_TSR20
 
 comm <- filter(comm, comm$YEAR > 2015)
 ```
@@ -49,42 +51,66 @@ comm <- filter(comm, comm$YEAR > 2015)
 ## Rice
 
 ```{r rice, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$RICE_05~comm$DATE)
+ggplot(comm, aes(x = DATE, y = RICE_05)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of rice ($/mt)") +
+  theme_bw()
 ```
 
 ## Palm Oil
 
 ```{r palm-oil, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$PALM_OIL~comm$DATE)
+ggplot(comm, aes(x = DATE, y = PALM_OIL)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of palm oil ($/mt)") +
+  theme_bw()
 ```
 
 ## Rubber
 
 ```{r rubber, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$RUBBER1_MYSG~comm$DATE)
+ggplot(comm, aes(x = DATE, y = RUBBER_TSR20)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of rubber ($/kg)") +
+  theme_bw()
 ```
 
 ## Iron ore
 
 ```{r iron, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$IRON_ORE~comm$DATE)
+ggplot(comm, aes(x = DATE, y = IRON_ORE)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of iron ore ($/dmtu)*") +
+  theme_bw()
 ```
 
 ## Crude Petro
 
 ```{r crude, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$CRUDE_PETRO~comm$DATE)
+ggplot(comm, aes(x = DATE, y = CRUDE_PETRO)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of crude petrol ($/bbl)") +
+  theme_bw()
 ```
 
 ## Gold
 
 ```{r gold, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$GOLD~comm$DATE)
+ggplot(comm, aes(x = DATE, y = GOLD)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of gold ($/troy oz)") +
+  theme_bw()
 ```
 
 ## Sugar
 
 ```{r sugar, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
-plot(comm$SUGAR_WLD~comm$DATE)
+ggplot(comm, aes(x = DATE, y = SUGAR_WLD)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of sugar ($/kg)") +
+  theme_bw()
 ```
 
+Note: All prices are in nominal U.S. dollars.
+
+Source: [World Bank Commodity Price Data](https://www.worldbank.org/en/research/commodity-markets)

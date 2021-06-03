@@ -28,3 +28,8 @@ World commodity prices important to Liberia
 ## Sugar
 
 ![](Commodities_files/figure-gfm/sugar-1.png)<!-- -->
+
+Note: All prices are in nominal U.S. dollars.
+
+Source: [World Bank Commodity Price
+Data](https://www.worldbank.org/en/research/commodity-markets)
