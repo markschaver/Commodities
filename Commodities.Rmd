@@ -1,0 +1,87 @@
+---
+title: World commodity prices important to Liberia
+output: rmarkdown::github_document
+---
+
+```{r data-prep, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+library(openxlsx)
+library(tidyverse)
+library(knitr)
+
+setwd("~/OneDrive/03 Resources/Data/Commodities")
+
+webFile <- "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx"
+localFile <- "~/OneDrive/03 Resources/Data/Commodities/commodities.xlsx"
+
+if(!file.exists(localFile)){
+   download.file(webFile,localFile,
+	   method="wininet", 
+	   mode="wb") # "wb" means "write binary"
+} else message("File already loaded locally, using disk version")
+
+comm <- read.xlsx(xlsxFile = localFile,
+                sheet = "Monthly Prices", startRow = 7, colNames = TRUE)
+comm <- as_tibble(comm)
+names(comm)[names(comm) == "X1"] <- "MONTH"
+
+# Commodities important to Liberia
+comm <- select(comm, 
+	MONTH, 
+	CRUDE_PETRO, 
+	PALM_OIL,
+	RICE_05,
+	SUGAR_WLD,
+	RUBBER1_MYSG,
+	IRON_ORE,
+	GOLD
+	)
+
+comm <- separate(comm, MONTH, c("YEAR", "MONTH"), sep = "M")
+comm$YEAR <- as.numeric(comm$YEAR)
+comm$MONTH <- as.numeric(comm$MONTH)
+
+comm <- filter(comm, comm$YEAR > 2015)
+```
+
+## Rice
+
+```{r rice, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$RICE_05~comm$YEAR)
+```
+
+## Palm Oil
+
+```{r palm-oil, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$PALM_OIL~comm$YEAR)
+```
+
+## Rubber
+
+```{r rubber, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$RUBBER1_MYSG~comm$YEAR)
+```
+
+## Iron ore
+
+```{r iron, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$IRON_ORE~comm$YEAR)
+```
+
+## Crude Petro
+
+```{r crude, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$CRUDE_PETRO~comm$YEAR)
+```
+
+## Gold
+
+```{r gold, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$GOLD~comm$YEAR)
+```
+
+## Sugar
+
+```{r sugar, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+plot(comm$SUGAR_WLD~comm$YEAR)
+```
+
