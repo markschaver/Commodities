@@ -1,13 +1,47 @@
-# Commodities
+World commodity prices important to Liberia
+================
 
-## World Bank commodity price data
+Source: [World Bank Commodity Price
+Data](https://www.worldbank.org/en/research/commodity-markets)
 
-The World Bank's commodity price data report is known as the "pink sheet" and they are released on the second business day of each month.
+All prices are in nominal U.S. dollars.
 
-## Main page
+## Rice
 
-[Commodity markets](https://www.worldbank.org/en/research/commodity-markets)
+![](README_files/figure-gfm/rice-1.png)<!-- -->
 
-## Direct link to CMO Historical Data Monthly
+## Palm Oil
 
-[CMO Historical Data Monthly](https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx)
+![](README_files/figure-gfm/palm-oil-1.png)<!-- -->
+
+## Rubber
+
+![](README_files/figure-gfm/rubber-1.png)<!-- -->
+
+## Iron ore
+
+![](README_files/figure-gfm/iron-1.png)<!-- -->
+
+## Oil
+
+![](README_files/figure-gfm/crude-1.png)<!-- -->
+
+## Gold
+
+![](README_files/figure-gfm/gold-1.png)<!-- -->
+
+## Cocoa
+
+![](README_files/figure-gfm/cocoa-1.png)<!-- -->
+
+## Coffee
+
+![](README_files/figure-gfm/coffee-1.png)<!-- -->
+
+## Logs
+
+![](README_files/figure-gfm/logs-1.png)<!-- -->
+
+## Sawnwood
+
+![](README_files/figure-gfm/sawnwood-1.png)<!-- -->

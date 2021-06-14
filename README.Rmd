@@ -1,0 +1,221 @@
+---
+title: World commodity prices important to Liberia
+output: rmarkdown::github_document
+---
+
+Source: [World Bank Commodity Price Data](https://www.worldbank.org/en/research/commodity-markets)
+
+All prices are in nominal U.S. dollars.
+
+```{r data-prep, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+library(openxlsx)
+library(tidyverse)
+library(knitr)
+library(zoo)
+
+setwd("~/OneDrive/03 Resources/Data/Commodities")
+
+webFile <- "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx"
+localFile <- "~/OneDrive/03 Resources/Data/Commodities/commodities.xlsx"
+
+if(!file.exists(localFile)){
+   download.file(webFile,localFile,
+	   method="wininet", 
+	   mode="wb") # "wb" means "write binary"
+} else message("File already loaded locally, using disk version")
+
+comm <- read.xlsx(xlsxFile = localFile,
+                sheet = "Monthly Prices", startRow = 7, colNames = TRUE)
+comm <- as_tibble(comm)
+names(comm)[names(comm) == "X1"] <- "MONTH"
+
+# Commodities important to Liberia
+comm <- select(comm, 
+	MONTH,
+	COCOA,
+  COFFEE_ROBUS,
+  LOGS_CMR,
+  SAWNWD_CMR,
+	CRUDE_PETRO, 
+	PALM_OIL,
+	RICE_05,
+	SUGAR_WLD,
+	RUBBER_TSR20,
+	IRON_ORE,
+	GOLD
+	)
+
+comm <- separate(comm, MONTH, c("YEAR", "MONTH"), sep = "M")
+comm$YEAR <- as.numeric(comm$YEAR)
+comm$MONTH <- as.numeric(comm$MONTH)
+comm$RUBBER_TSR20 <- as.numeric(comm$RUBBER_TSR20)
+
+comm$DATE <- as.yearmon(paste(comm$YEAR, comm$MONTH), "%Y %m")
+# comm$RUBBER_TSR20 <- comm$RUBBER_TSR20
+
+comm <- filter(comm, comm$YEAR > 2015)
+```
+
+## Rice
+
+```{r rice, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = RICE_05)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of rice ($/mt)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$RICE_05)-20,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Palm Oil
+
+```{r palm-oil, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = PALM_OIL)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of palm oil ($/mt)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$PALM_OIL)-70,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Rubber
+
+```{r rubber, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = RUBBER_TSR20)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of rubber ($/kg)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$RUBBER_TSR20)-.14,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Iron ore
+
+```{r iron, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = IRON_ORE)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of iron ore ($/dmtu)*") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$IRON_ORE)-18,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Oil
+
+```{r crude, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = CRUDE_PETRO)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of oil ($/bbl)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$CRUDE_PETRO)-6,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Gold
+
+```{r gold, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = GOLD)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of gold ($/troy oz)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$GOLD)-95,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Cocoa
+
+```{r cocoa, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = COCOA)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of cocoa ($/kg)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$COCOA)-.11,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Coffee
+
+```{r coffee, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+ggplot(comm, aes(x = DATE, y = COFFEE_ROBUS)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of coffee ($/kg)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$COFFEE_ROBUS)-.1,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Logs
+
+```{r logs, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+comm$LOGS_CMR <- as.numeric(comm$LOGS_CMR)
+ggplot(comm, aes(x = DATE, y = LOGS_CMR)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of logs ($/cubic meter)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$LOGS_CMR)-7,
+             angle = 90, 
+             vjust = 1)
+```
+
+## Sawnwood
+
+```{r sawnwood, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+comm$SAWNWD_CMR <- as.numeric(comm$SAWNWD_CMR)
+ggplot(comm, aes(x = DATE, y = SAWNWD_CMR)) + 
+  geom_line() +
+  labs(x = "Date", y = "Price of sawnwood ($/cubic meter)") +
+  theme_bw() + 
+  geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
+  annotate(geom = "text",
+             label = "January 2020",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$SAWNWD_CMR)-11,
+             angle = 90, 
+             vjust = 1)
+```
+
+
