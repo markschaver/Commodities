@@ -65,11 +65,11 @@ ggplot(comm, aes(x = DATE, y = RICE_05)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$RICE_05)-20,
+             y = max(comm$RICE_05)-25,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Palm Oil
@@ -81,11 +81,11 @@ ggplot(comm, aes(x = DATE, y = PALM_OIL)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$PALM_OIL)-70,
+             y = max(comm$PALM_OIL)-80,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Rubber
@@ -97,11 +97,11 @@ ggplot(comm, aes(x = DATE, y = RUBBER_TSR20)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$RUBBER_TSR20)-.14,
+             y = max(comm$RUBBER_TSR20)-.16,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Iron ore
@@ -113,11 +113,11 @@ ggplot(comm, aes(x = DATE, y = IRON_ORE)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$IRON_ORE)-18,
+             y = max(comm$IRON_ORE)-22,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Oil
@@ -129,11 +129,11 @@ ggplot(comm, aes(x = DATE, y = CRUDE_PETRO)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$CRUDE_PETRO)-6,
+             y = max(comm$CRUDE_PETRO)-7.5,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Gold
@@ -145,11 +145,11 @@ ggplot(comm, aes(x = DATE, y = GOLD)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$GOLD)-95,
+             y = max(comm$GOLD)-110,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Cocoa
@@ -161,11 +161,11 @@ ggplot(comm, aes(x = DATE, y = COCOA)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$COCOA)-.11,
+             y = max(comm$COCOA)-.16,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Coffee
@@ -177,11 +177,11 @@ ggplot(comm, aes(x = DATE, y = COFFEE_ROBUS)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$COFFEE_ROBUS)-.1,
+             y = max(comm$COFFEE_ROBUS)-.13,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Logs
@@ -194,11 +194,11 @@ ggplot(comm, aes(x = DATE, y = LOGS_CMR)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$LOGS_CMR)-7,
+             y = max(comm$LOGS_CMR)-9,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 ## Sawnwood
@@ -211,11 +211,11 @@ ggplot(comm, aes(x = DATE, y = SAWNWD_CMR)) +
   theme_bw() + 
   geom_vline(xintercept=as.numeric(comm$DATE[comm$DATE == "Jan 2020"]), linetype=1, color="red") +
   annotate(geom = "text",
-             label = "January 2020",
+             label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
-             y = max(comm$SAWNWD_CMR)-11,
+             y = max(comm$SAWNWD_CMR)-15,
              angle = 90, 
-             vjust = 1)
+             vjust = 1.2)
 ```
 
 
