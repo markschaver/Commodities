@@ -13,10 +13,10 @@ library(tidyverse)
 library(knitr)
 library(zoo)
 
-setwd("~/OneDrive/03 Resources/Data/Commodities")
+setwd("~/OneDrive/Data/Commodities")
 
 webFile <- "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx"
-localFile <- "~/OneDrive/03 Resources/Data/Commodities/commodities.xlsx"
+localFile <- "~/OneDrive/Data/Commodities/commodities.xlsx"
 
 if(!file.exists(localFile)){
    download.file(webFile,localFile,
@@ -26,6 +26,7 @@ if(!file.exists(localFile)){
 
 comm <- read.xlsx(xlsxFile = localFile,
                 sheet = "Monthly Prices", startRow = 7, colNames = TRUE)
+
 comm <- as_tibble(comm)
 names(comm)[names(comm) == "X1"] <- "MONTH"
 
