@@ -1,5 +1,6 @@
 World commodity prices important to Liberia
 ================
+Friday, May 06, 2022
 
 Source: [World Bank Commodity Price
 Data](https://www.worldbank.org/en/research/commodity-markets)
