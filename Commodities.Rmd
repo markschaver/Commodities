@@ -1,5 +1,6 @@
 ---
 title: World commodity prices important to Liberia
+date: "`r format(Sys.Date(), format='%A, %B %d, %Y')`"
 output: rmarkdown::github_document
 ---
 
