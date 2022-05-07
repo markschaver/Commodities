@@ -1,6 +1,6 @@
 World commodity prices important to Liberia
 ================
-Friday, May 06, 2022
+Saturday, May 07, 2022
 
 Source: [World Bank Commodity Price
 Data](https://www.worldbank.org/en/research/commodity-markets)
@@ -46,3 +46,7 @@ All prices are in nominal U.S. dollars.
 ## Sawnwood
 
 ![](Commodities_files/figure-gfm/sawnwood-1.png)<!-- -->
+
+## Chicken
+
+![](Commodities_files/figure-gfm/chicken-1.png)<!-- -->
