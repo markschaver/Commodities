@@ -46,7 +46,8 @@ comm <- select(comm,
   SUGAR_WLD,
   RUBBER_TSR20,
   IRON_ORE,
-  GOLD
+  GOLD,
+  CHICKEN
   )
 
 comm <- separate(comm, MONTH, c("YEAR", "MONTH"), sep = "M")
@@ -246,6 +247,27 @@ ggplot(comm, aes(x = DATE, y = SAWNWD_CMR)) +
              label = "Start of pandemic",
              x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
              y = max(comm$SAWNWD_CMR) - 15,
+             angle = 90,
+             vjust = 1.2) +
+  scale_y_continuous(labels = scales::dollar_format())
+
+```
+
+## Chicken
+
+```{r chicken, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+comm$CHICKEN <- as.double(comm$CHICKEN)
+ggplot(comm, aes(x = DATE, y = CHICKEN)) +
+  geom_line(color = "#345D96", size = 1) +
+  labs(x = "", y = "Price of chicken ($/kg)") +
+  geom_vline(xintercept = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             linetype = 1,
+             color = "#D01319",
+             size = .7) +
+  annotate(geom = "text",
+             label = "Start of pandemic",
+             x = as.numeric(comm$DATE[comm$DATE == "Jan 2020"]),
+             y = max(comm$CHICKEN) - .3,
              angle = 90,
              vjust = 1.2) +
   scale_y_continuous(labels = scales::dollar_format())
